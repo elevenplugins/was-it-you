@@ -4,9 +4,22 @@
  * Version: 1.0.0
  * Plugin URI: https://eleven.io/was-it-you
  * Description: Was it you? is a plugin that sends you an email if you logged in from a new IP.
- * Author: Eleven Plugins
+ * Author: gripgrip, bogdand, Eleven Plugins
  * Author URI: https://eleven.io/
  * License: GPL2
+ *
+ * "Was it you?" is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * any later version.
+ *
+ * "Was it you?" is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with "Was it you?". If not, see https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html.
  *
  * @package was-it-you
  *
