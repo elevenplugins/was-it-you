@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Was it you?
- * Version: 0.0.1
+ * Version: 1.0.0
  * Plugin URI: https://eleven.io/was-it-you
  * Description: Was it you? is a plugin that sends you an email if you logged in from a new IP.
  * Author: Eleven Plugins
