@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: Was it you?
- * Version: 0.0.1
+ * Version: 1.0.0
  * Plugin URI: https://eleven.io/was-it-you
  * Description: Was it you? is a plugin that sends you an email if you logged in from a new IP.
  * Author: Eleven Plugins
  * Author URI: https://eleven.io/
  *
- * @package was-it-you
+ * @package E11_WasitYou
  *
  */
 
@@ -21,13 +21,12 @@ class E11_Was_It_You {
 	 *
 	 * @var string
 	 */
-	public $version = '0.0.1';
+	public $version = '1.0.0';
 
 	/**
 	 * E11_Was_It_You constructor.
 	 */
 	public function __construct() {
-
 		$this->init();
 	}
 
@@ -43,9 +42,7 @@ class E11_Was_It_You {
 	 */
 	public function includes() {
 
-		include_once 'inc/login.php';
-
-		new E11_Login();
+		include_once 'inc/WasItYou.php';
 
 	}
 }

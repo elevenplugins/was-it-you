@@ -1,18 +1,24 @@
 <?php
 
-class E11_Login {
+namespace E11_WasitYou;
 
+/**
+ * Class Login
+ *
+ * @package E11_WasitYou
+ */
+class Login {
+
+	/**
+	 * The current user ip.
+	 *
+	 * @var string
+	 */
 	private $ip;
 
 	/**
-	 * @var WP_User The current user.
+	 * Login constructor.
 	 */
-	private $user;
-
-	private $user_history_key = 'e11_ip_history';
-
-	private $user_history = [];
-
 	public function __construct() {
 
 		if ( empty( $_SERVER['REMOTE_ADDR'] ) ) {
@@ -22,7 +28,9 @@ class E11_Login {
 		$this->hooks();
 	}
 
-
+	/**
+	 * Adding hooks.
+	 */
 	public function hooks() {
 
 		add_action( 'wp_login', [ $this, 'maybe_notify_login' ], 10, 2 );
@@ -31,28 +39,25 @@ class E11_Login {
 	}
 
 	/**
-	 * @param string  $user_login
-	 * @param WP_User $user
+	 * Check if the current login should be notified.
+	 *
+	 * @param string   $user_login The user login username.
+	 * @param \WP_User $user The current user that just logged in.
 	 */
 	public function maybe_notify_login( $user_login, $user ) {
-		$this->set_user( $user );
+		$wiy_user = new User( $user );
 
-		if ( $this->is_ip_new() ) {
-			$this->save_user_ip();
+		if ( $wiy_user->is_ip_new( $this->get_ip() ) ) {
+			$wiy_user->save_user_ip( $this->get_ip() );
 			do_action( 'e11_notify_new_ip', $user, $this->get_ip() );
 		}
 	}
 
-	public function is_ip_new() {
-
-		$history = $this->get_user_ip_history();
-		if ( in_array( $this->get_ip(), $history, true ) ) {
-			return false;
-		}
-
-		return true;
-	}
-
+	/**
+	 * Get the IP from the server variables and also store it.
+	 *
+	 * @return string
+	 */
 	public function get_ip() {
 		// Checked the empty again just for phpcs.
 		if ( empty( $this->ip ) && ! empty( $_SERVER['REMOTE_ADDR'] ) ) {
@@ -62,40 +67,16 @@ class E11_Login {
 		return $this->ip;
 	}
 
-	/**
-	 * @param WP_User|int $user
-	 */
-	public function get_user_ip_history() {
-
-		$user_history = get_user_meta( $this->user->ID, $this->user_history_key, true );
-
-		if ( ! empty( $user_history ) ) {
-			$this->user_history = $user_history;
-		}
-
-		return $this->user_history;
-
-	}
-
-	public function save_user_ip() {
-
-		array_unshift( $this->user_history, $this->get_ip() );
-
-		update_user_meta( $this->user->ID, $this->user_history_key, $this->user_history );
-
-	}
-
-	protected function set_user( $user ) {
-		$this->user = $user;
-	}
 
 	/**
-	 * @param WP_User $user
-	 * @param string $ip
+	 * Send a new ip email.
+	 *
+	 * @param \WP_User $user The user object.
+	 * @param string   $ip The IP to add to the list.
 	 */
 	public function new_ip_email( $user, $ip ) {
 
-		$email_to = $user->user_email;
+		$email_to   = $user->user_email;
 		$site_title = get_bloginfo( 'name' );
 
 		wp_mail( $email_to, 'New login to your account on ' . $site_title, 'We detected a new login from: ' . $ip . ' - If this was you please ignore this email.' );
@@ -103,3 +84,5 @@ class E11_Login {
 	}
 
 }
+
+new Login();
