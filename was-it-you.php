@@ -2,10 +2,10 @@
 /**
  * Plugin Name: Was it you?
  * Version: 1.0.0
- * Plugin URI: https://eleven.io/was-it-you
+ * Plugin URI: https://elevenplugins.com/was-it-you
  * Description: Was it you? is a plugin that sends you an email if you logged in from a new IP.
  * Author: gripgrip, bogdand, Eleven Plugins
- * Author URI: https://eleven.io/
+ * Author URI: https://elevenplugins.com/
  * License: GPL2
  *
  * "Was it you?" is free software: you can redistribute it and/or modify
