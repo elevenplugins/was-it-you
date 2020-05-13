@@ -92,6 +92,11 @@ class User {
 
 		array_unshift( $this->user_history, $ip );
 
+		$limit = Settings::instance()->get_option( 'ips_to_save', 0 );
+		if ( $limit > 0 ) {
+			$this->user_history = array_slice( $this->user_history, 0, $limit );
+		}
+
 		update_user_meta( $this->user->ID, $this->user_history_key, $this->user_history );
 
 	}
