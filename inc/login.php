@@ -20,7 +20,6 @@ class Login {
 	 * Login constructor.
 	 */
 	public function __construct() {
-
 		if ( empty( $_SERVER['REMOTE_ADDR'] ) ) {
 			// If the IP is not set don't even bother.
 			return;

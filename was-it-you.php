@@ -41,7 +41,26 @@ class E11_Was_It_You {
 	 * E11_Was_It_You constructor.
 	 */
 	public function __construct() {
+		$this->define_constants();
 		$this->init();
+	}
+
+	/**
+	 * Define plugin-specific constants.
+	 */
+	public function define_constants() {
+
+		if ( ! defined( 'E11_WAS_IT_YOU_PLUGIN_FILE' ) ) {
+			define( 'E11_WAS_IT_YOU_PLUGIN_FILE', __FILE__ );
+		}
+
+		if ( ! defined( 'E11_WAS_IT_YOU_PLUGIN_DIR' ) ) {
+			define( 'E11_WAS_IT_YOU_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+		}
+
+		if ( ! defined( 'E11_WAS_IT_YOU_PLUGIN_URL' ) ) {
+			define( 'E11_WAS_IT_YOU_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+		}
 	}
 
 	/**

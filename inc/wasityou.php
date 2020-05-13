@@ -26,9 +26,8 @@ namespace E11_WasitYou {
 		/**
 		 * Main Instance.
 		 *
-		 * @since 1.0.1
-		 *
 		 * @return WasItYou
+		 * @since 1.0.1
 		 */
 		public static function instance() {
 
@@ -43,15 +42,16 @@ namespace E11_WasitYou {
 
 			return self::$instance;
 		}
+
 		/**
 		 * Include files.
 		 *
 		 * @since 1.0.1
 		 */
 		private function includes() {
-
-			include_once 'login.php';
-			include_once 'user.php';
+			require_once E11_WAS_IT_YOU_PLUGIN_DIR . '/inc/login.php';
+			require_once E11_WAS_IT_YOU_PLUGIN_DIR . '/inc/user.php';
+			require_once E11_WAS_IT_YOU_PLUGIN_DIR . '/inc/admin.php';
 		}
 	}
 
