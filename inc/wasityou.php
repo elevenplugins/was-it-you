@@ -49,6 +49,7 @@ namespace E11_WasitYou {
 		 * @since 1.0.1
 		 */
 		private function includes() {
+			require_once E11_WAS_IT_YOU_PLUGIN_DIR . '/inc/settings.php';
 			require_once E11_WAS_IT_YOU_PLUGIN_DIR . '/inc/login.php';
 			require_once E11_WAS_IT_YOU_PLUGIN_DIR . '/inc/user.php';
 			require_once E11_WAS_IT_YOU_PLUGIN_DIR . '/inc/admin.php';
