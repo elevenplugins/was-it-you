@@ -78,7 +78,10 @@ class Login {
 		$email_to   = $user->user_email;
 		$site_title = get_bloginfo( 'name' );
 
-		wp_mail( $email_to, 'New login to your account on ' . $site_title, 'We detected a new login from: ' . $ip . ' - If this was you please ignore this email.' );
+		//Message body
+		$message_body_text = sprintf( esc_html__( 'We detected a new login from: %1$e - If this was you please ignore this email. If you don\'t recognize the login attempt we recommend you to login and change your password.', 'was-it-you' ), $ip );
+
+		wp_mail( $email_to, 'New login to your account on ' . $site_title, $message_body_text );
 
 	}
 
