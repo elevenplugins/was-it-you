@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Was it you?
  * Version: 1.0.0
- * Plugin URI: https://elevenplugins.com/was-it-you
+ * Plugin URI: https://eleven.io/was-it-you
  * Description: Was it you? is a plugin that sends you an email if you logged in from a new IP.
  * Author: gripgrip, bogdand, Eleven Plugins
  * Author URI: https://elevenplugins.com/
@@ -21,7 +21,7 @@
  * You should have received a copy of the GNU General Public License
  * along with "Was it you?". If not, see https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html.
  *
- * @package was-it-you
+ * @package E11_WasitYou
  *
  */
 
@@ -35,14 +35,32 @@ class E11_Was_It_You {
 	 *
 	 * @var string
 	 */
-	public $version = '0.0.1';
+	public $version = '1.0.0';
 
 	/**
 	 * E11_Was_It_You constructor.
 	 */
 	public function __construct() {
-
+		$this->define_constants();
 		$this->init();
+	}
+
+	/**
+	 * Define plugin-specific constants.
+	 */
+	public function define_constants() {
+
+		if ( ! defined( 'E11_WAS_IT_YOU_PLUGIN_FILE' ) ) {
+			define( 'E11_WAS_IT_YOU_PLUGIN_FILE', __FILE__ );
+		}
+
+		if ( ! defined( 'E11_WAS_IT_YOU_PLUGIN_DIR' ) ) {
+			define( 'E11_WAS_IT_YOU_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+		}
+
+		if ( ! defined( 'E11_WAS_IT_YOU_PLUGIN_URL' ) ) {
+			define( 'E11_WAS_IT_YOU_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+		}
 	}
 
 	/**
@@ -57,9 +75,7 @@ class E11_Was_It_You {
 	 */
 	public function includes() {
 
-		include_once 'inc/login.php';
-
-		new E11_Login();
+		include_once 'inc/WasItYou.php';
 
 	}
 }
