@@ -78,11 +78,25 @@ class Login {
 		$email_to   = $user->user_email;
 		$site_title = get_bloginfo( 'name' );
 
-		//Message body
-		$message_body_text = sprintf( esc_html__( 'We detected a new login from: %1$e - If this was you please ignore this email. If you don\'t recognize the login attempt we recommend you to login and change your password.', 'was-it-you' ), $ip );
+		// Message body.
+		$message_body_text = sprintf( esc_html__( 'We detected a new login from: %1$s - If this was you please ignore this email. If you don\'t recognize the login attempt we recommend you to login and change your password.', 'was-it-you' ), $ip );
 
+		// Set html content-type.
+		add_filter( 'wp_mail_content_type', [ $this, 'email_content_type' ], 10 );
 		wp_mail( $email_to, 'New login to your account on ' . $site_title, $message_body_text );
 
+		// Reset content-type to avoid conflicts.
+		remove_filter( 'wp_mail_content_type', [ $this, 'email_content_type' ] );
+
+	}
+
+	/**
+	 * Content type of the sent email.
+	 *
+	 * @return string Content type
+	 */
+	public function email_content_type() {
+		return 'text/html';
 	}
 
 }
