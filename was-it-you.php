@@ -75,7 +75,7 @@ class E11_Was_It_You {
 	 */
 	public function includes() {
 
-		include_once 'inc/WasItYou.php';
+		include_once 'inc/wasityou.php';
 
 	}
 }
