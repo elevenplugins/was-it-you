@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Was it you?
- * Version: 1.0.0
- * Plugin URI: https://eleven.io/was-it-you
+ * Plugin Name: Was it you? Account login notifications
+ * Version: 1.0.1
+ * Plugin URI: https://elevenplugins.com/
  * Description: Was it you? is a plugin that sends you an email if you logged in from a new IP.
  * Author: gripgrip, bogdand, Eleven Plugins
  * Author URI: https://elevenplugins.com/
@@ -75,7 +75,7 @@ class E11_Was_It_You {
 	 */
 	public function includes() {
 
-		include_once 'inc/WasItYou.php';
+		include_once 'inc/wasityou.php';
 
 	}
 }
