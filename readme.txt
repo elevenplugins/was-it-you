@@ -26,14 +26,15 @@ Available settings:
 Yes but the plugin works just fine with the default settings.
 For simplicity we'll showcase and explain the available options:
 **Number of IPs to save**
+
 * 0 is the default setting.
 * By default the plugin stores all login IPs in user history.
 * Any number larger than 0 determines the number of login IPs to save in user history.
 
-= Does the plugin stores any data? =
+= Does the plugin store any data? =
 The plugin tracks the last IP's used to login for each account and stores them in a custom table for performance reasons.
 
-= Does this plugin is GDPR compliant? =
+= Is this plugin GDPR compliant? =
 This version is not GDPR compliant. The IP's are stored in plain, un-anonymized. We planed for a GDPR compliance feature soon.
 
 == Changelog ==
